@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JobTrackr – Job Application Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">JobTrackr</div>
+      <nav class="site-nav">
+        <span>Dashboard</span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-layout">
+    <section class="panel panel-form">
+      <h2>Add / Edit Application</h2>
+      <form id="app-form" autocomplete="off">
+        <input type="hidden" id="app-id" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">Company *</label>
+            <input id="company" required placeholder="e.g. Google" />
+          </div>
+          <div class="form-group">
+            <label for="role">Role *</label>
+            <input id="role" required placeholder="e.g. SDE Intern" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input id="location" placeholder="e.g. Bangalore / Remote" />
+          </div>
+          <div class="form-group">
+            <label for="appliedDate">Applied on</label>
+            <input id="appliedDate" type="date" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status">
+              <option value="applied">Applied</option>
+              <option value="oa">Online Assessment</option>
+              <option value="interview">Interview</option>
+              <option value="offer">Offer</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="salaryMin">Salary (Min)</label>
+            <input id="salaryMin" type="number" placeholder="e.g. 8 LPA" />
+          </div>
+          <div class="form-group">
+            <label for="salaryMax">Salary (Max)</label>
+            <input id="salaryMax" type="number" placeholder="e.g. 12 LPA" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="jobLink">Job link</label>
+            <input id="jobLink" type="url" placeholder="https://..." />
+          </div>
+          <div class="form-group">
+            <label for="tags">Tags (comma separated)</label>
+            <input id="tags" placeholder="e.g. product-based, backend" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="2" placeholder="Interview notes, contact person, etc."></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary" id="save-btn">Save</button>
+          <button type="button" class="btn" id="reset-btn">Clear</button>
+        </div>
+      </form>
+
+      <div class="summary" id="summary">
+        <div class="summary-item">
+          <span>Total</span>
+          <strong id="sum-total">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>Applied</span>
+          <strong id="sum-applied">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>OA</span>
+          <strong id="sum-oa">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>Interview</span>
+          <strong id="sum-interview">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>Offer</span>
+          <strong id="sum-offer">0</strong>
+        </div>
+        <div class="summary-item">
+          <span>Rejected</span>
+          <strong id="sum-rejected">0</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel panel-board">
+      <div class="board-header">
+        <div class="search-group">
+          <input id="search" placeholder="Search by company, role or location..." />
+        </div>
+      </div>
+
+      <div class="board" id="board">
+        <div class="column" data-status="applied">
+          <h3>Applied</h3>
+          <div class="column-body" id="col-applied"></div>
+        </div>
+        <div class="column" data-status="oa">
+          <h3>Online Assessment</h3>
+          <div class="column-body" id="col-oa"></div>
+        </div>
+        <div class="column" data-status="interview">
+          <h3>Interview</h3>
+          <div class="column-body" id="col-interview"></div>
+        </div>
+        <div class="column" data-status="offer">
+          <h3>Offer</h3>
+          <div class="column-body" id="col-offer"></div>
+        </div>
+        <div class="column" data-status="rejected">
+          <h3>Rejected</h3>
+          <div class="column-body" id="col-rejected"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>JobTrackr by Sambit Kumar Sahu</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
